@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>textarea按照内容高度变化而变化 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天有一个同事遇到一个问题，那就是设计师要求输入框(也就是textarea)的高度能够随着内容高度的变化而变化，也就是不出现垂直方向上的滚动条。 然后他尝试通过设置定时器让textarea的高度始终等于scrollHeight解决这个问题: 123setInterval(function() &amp;#123;	document.getElementById(&amp;apos;textarea&amp;apos;).">
+<meta property="og:type" content="article">
+<meta property="og:title" content="textarea按照内容高度变化而变化">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="昨天有一个同事遇到一个问题，那就是设计师要求输入框(也就是textarea)的高度能够随着内容高度的变化而变化，也就是不出现垂直方向上的滚动条。 然后他尝试通过设置定时器让textarea的高度始终等于scrollHeight解决这个问题: 123setInterval(function() &amp;#123;	document.getElementById(&amp;apos;textarea&amp;apos;).">
+<meta property="og:updated_time" content="2017-04-30T04:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="textarea按照内容高度变化而变化">
+<meta name="twitter:description" content="昨天有一个同事遇到一个问题，那就是设计师要求输入框(也就是textarea)的高度能够随着内容高度的变化而变化，也就是不出现垂直方向上的滚动条。 然后他尝试通过设置定时器让textarea的高度始终等于scrollHeight解决这个问题: 123setInterval(function() &amp;#123;	document.getElementById(&amp;apos;textarea&amp;apos;).">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/" class="article-date">
+  <time datetime="2017-04-30T04:25:32.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      textarea按照内容高度变化而变化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天有一个同事遇到一个问题，那就是设计师要求输入框(也就是textarea)的高度能够随着内容高度的变化而变化，也就是不出现垂直方向上的滚动条。</p>
+<p>然后他尝试通过设置定时器让textarea的高度始终等于scrollHeight解决这个问题:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setInterval(function() &#123;</div><div class="line">	document.getElementById(&apos;textarea&apos;).style.height = document.getElementById(&apos;textarea&apos;).scrollHeight;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>不断输入内容，高度增加的时候，确实textarea的高度也增加了。但是内容减少的时候，发现textarea的高度却不会减少。这是由于scrollHeight的高度其实反应着height的高度，textarea内容的高度减少，不能减少scrollHeight的值。<br>例子如下:</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/JulienBrks/d9yna9fa/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h4 id="我的解决方式"><a href="#我的解决方式" class="headerlink" title="我的解决方式:"></a>我的解决方式:</h4><p>由于不能获取textarea的内容高度，所以我想到使用一个p标签模拟textarea，始终保持p标签的内容跟textarea的内容一样，然后获取p标签的高度设置textarea的高度，就能够让textarea的高度随着内容高度变化二自动变化了。<br>例子如下:</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/JulienBrks/nc2gcemv/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><p>1、p标签和textarea的字体，字号，宽度，行高，word-break样式保持一致<br>2、p标签要保证<code>white-space: pre-wrap</code>，这样回车的时候也能够让p标签的高度增加</p>
+<h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题:"></a>存在的问题:</h4><p>1、p标签存在连续多个回车的时候，textarea会出现滚动条，由于textarea最后一个回车会占一行，但是p标签不会。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/" data-id="cj247sjkn000zkg36qsr9rahq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/2015-11-26-javascriptgao-ji-cheng-xu-she-ji-xue-xi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript事件简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/30/2015-12-17-jian-shen-ji-hua/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">健身入坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

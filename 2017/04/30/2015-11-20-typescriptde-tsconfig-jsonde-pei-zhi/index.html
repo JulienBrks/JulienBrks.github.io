@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>typescript的配置选项简介 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作用:它主要使用在typescript的编译中作为配置文件，typescript的编译会默认寻找当前目录的tsconfig.json，然后读取里面的配置进行编译。 主要选项 files，它的值是一个字符串数组。用来规定要被编译的文件, 假如需要编译某一个文件，那么就应该将这个文件放入到里面。如下 1234567&amp;#123;  &amp;quot;compilerOptions&amp;quot;: &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript的配置选项简介">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/30/2015-11-20-typescriptde-tsconfig-jsonde-pei-zhi/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="作用:它主要使用在typescript的编译中作为配置文件，typescript的编译会默认寻找当前目录的tsconfig.json，然后读取里面的配置进行编译。 主要选项 files，它的值是一个字符串数组。用来规定要被编译的文件, 假如需要编译某一个文件，那么就应该将这个文件放入到里面。如下 1234567&amp;#123;  &amp;quot;compilerOptions&amp;quot;: &amp;#123;">
+<meta property="og:image" content="https://julienbrks.github.io/content/images/2015/11/a-2.png">
+<meta property="og:updated_time" content="2017-04-30T04:28:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript的配置选项简介">
+<meta name="twitter:description" content="作用:它主要使用在typescript的编译中作为配置文件，typescript的编译会默认寻找当前目录的tsconfig.json，然后读取里面的配置进行编译。 主要选项 files，它的值是一个字符串数组。用来规定要被编译的文件, 假如需要编译某一个文件，那么就应该将这个文件放入到里面。如下 1234567&amp;#123;  &amp;quot;compilerOptions&amp;quot;: &amp;#123;">
+<meta name="twitter:image" content="https://julienbrks.github.io/content/images/2015/11/a-2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-11-20-typescriptde-tsconfig-jsonde-pei-zhi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-20-typescriptde-tsconfig-jsonde-pei-zhi/" class="article-date">
+  <time datetime="2017-04-30T04:28:29.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      typescript的配置选项简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><p>它主要使用在typescript的编译中作为配置文件，typescript的编译会默认寻找当前目录的tsconfig.json，然后读取里面的配置进行编译。</p>
+<h4 id="主要选项"><a href="#主要选项" class="headerlink" title="主要选项"></a>主要选项</h4><ul>
+<li><p><code>files</code>，它的值是一个字符串数组。用来规定要被编译的文件, 假如需要编译某一个文件，那么就应该将这个文件放入到里面。如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;compilerOptions&quot;: &#123;</div><div class="line">    &quot;target&quot;: &quot;es5&quot;,</div><div class="line">    &quot;module&quot;: &quot;commonjs&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;files&quot;: [            &quot;src/app/account/information/controllers/information.controller.ts&quot;,</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>compilerOptions</code>, 它配置typescript编译的一些要求，比如要求编译成es5，编译之后是commonjs的语法等。</p>
+</li>
+</ul>
+<h4 id="atom-typescript支持的选项"><a href="#atom-typescript支持的选项" class="headerlink" title="atom-typescript支持的选项"></a>atom-typescript支持的选项</h4><ul>
+<li><code>filesGrob</code>和<code>atom: {&quot;rewriteTsconfig&quot;: true}</code>: 它可以使用<code>glob / minimatch / RegExp</code>等方式进行匹配, 然后支持将所有的符合条件的文件放到<code>files</code>的数组里面。下面这张图片可以看出，files数组里面存放所有符合filesGlob的<code>src/app/**/*.ts</code>条件的文件。<br><img src="/content/images/2015/11/a-2.png" alt="自动扩展图片实例"></li>
+</ul>
+<h4 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;compilerOptions&quot;: &#123;</div><div class="line">    &quot;target&quot;: &quot;es5&quot;,</div><div class="line">    &quot;module&quot;: &quot;commonjs&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;filesGlob&quot;: [</div><div class="line">    &quot;src/app/**/*.ts&quot;</div><div class="line">  ],</div><div class="line">  &quot;atom&quot;: &#123;</div><div class="line">    &quot;rewriteTsconfig&quot;: true</div><div class="line">  &#125;,</div><div class="line">  &quot;files&quot;: [</div><div class="line">    &quot;src/app/index.module.ts&quot;,</div><div class="line">    &quot;src/app/account/information/interfaces/information.ts&quot;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-20-typescriptde-tsconfig-jsonde-pei-zhi/" data-id="cj247sjk9000rkg36t8ud9uv1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/2015-11-18-qu-chu-chromezi-dong-tian-chong-de-yan-se/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关闭chrome记住密码的黄色背景
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/30/2015-11-23-angulargen-bai-du-di-tu-pei-he-hui-chu-xian-de-wen-ti/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">百度地图autocomplete导致angular双向绑定失效</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

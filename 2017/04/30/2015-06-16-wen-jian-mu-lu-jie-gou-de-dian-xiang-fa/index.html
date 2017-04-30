@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>我忍为比较好的文件夹设计 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先我们来看下文件夹的作用，将一批文件作为一个最小单位进行操作，它的主要功效是让批量操作变得非常简单。但是深层次的文件夹使阅读非常不方便，这个可以通过优化文件夹的创建方式解决这个问题。 在一个前端项目中，其实最需要做的是组件化，不断细化最小组件，充分复用。当然对于大项目来讲的话，还有一个层次就是业务模块。最后一点就是整个项目的开发层次划分，对于angular的项目，一般存在filter, dire">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我忍为比较好的文件夹设计">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="首先我们来看下文件夹的作用，将一批文件作为一个最小单位进行操作，它的主要功效是让批量操作变得非常简单。但是深层次的文件夹使阅读非常不方便，这个可以通过优化文件夹的创建方式解决这个问题。 在一个前端项目中，其实最需要做的是组件化，不断细化最小组件，充分复用。当然对于大项目来讲的话，还有一个层次就是业务模块。最后一点就是整个项目的开发层次划分，对于angular的项目，一般存在filter, dire">
+<meta property="og:updated_time" content="2017-04-30T04:37:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我忍为比较好的文件夹设计">
+<meta name="twitter:description" content="首先我们来看下文件夹的作用，将一批文件作为一个最小单位进行操作，它的主要功效是让批量操作变得非常简单。但是深层次的文件夹使阅读非常不方便，这个可以通过优化文件夹的创建方式解决这个问题。 在一个前端项目中，其实最需要做的是组件化，不断细化最小组件，充分复用。当然对于大项目来讲的话，还有一个层次就是业务模块。最后一点就是整个项目的开发层次划分，对于angular的项目，一般存在filter, dire">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/" class="article-date">
+  <time datetime="2017-04-30T04:37:09.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      我忍为比较好的文件夹设计
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们来看下文件夹的作用，将一批文件作为一个最小单位进行操作，它的主要功效是让批量操作变得非常简单。但是深层次的文件夹使阅读非常不方便，这个可以通过优化文件夹的创建方式解决这个问题。</p>
+<p>在一个前端项目中，其实最需要做的是组件化，不断细化最小组件，充分复用。当然对于大项目来讲的话，还有一个层次就是业务模块。最后一点就是整个项目的开发层次划分，对于angular的项目，一般存在filter, directive和service等分层。那么如何根据这些进行合理的分层呢？</p>
+<p>我觉得以可视化页面层级进行分文件夹会更好，然后将某一个视图下面需要的coffee直接挂到那个视图下面, 对于js,我觉得就按照上面的规则进行判断是否创建文件夹就好了。</p>
+<ul>
+<li>按照模块进行分层:我觉得对于一个比较大型的项目来讲的话，我觉得能够将整个项目按照业务模块来分是非常有必要的。主要是能够保证每一个业务模块都是独立的，能够保证业务模块能够进行非常容易的迁移(或者重命名,或者删除)。那么如何处理一个单独的视图(页面)呢？我认为也是给专门的文件夹会好一点，理由跟上面类似。</li>
+<li>将filter, service, template,directive分离是较好的。因为相较于将js放到一个文件，分离方便我们找到相对应的功能文件。那么要不要给专门的文件夹呢？我认为没有必要的, 因为假如我们的视图能够足够原子化，能够自给自足的话,filter,service这些功能模块的划分不符合文件夹的好处, 那就是不符合能够批量删除,修改和重命名的好处。</li>
+<li>但是对于img, css的静态资源文件, 我觉得还是要创建一个img文件夹, css文件夹(也可以命名为less, scss或者sass)作为静态资源存放的地方，但是img下面就不要再创建文件夹了，因为一个视图所需要的图片就是一个集合。</li>
+<li>关于sprite, 我的建议是创建一个sprite文件夹, 作为等待合并的小图标</li>
+<li>src作为源代码文件, dist作为可以运行的文件夹</li>
+<li>对于公用的组件库, 我的建议是放到src文件夹下面作为”子模块”引入，因为它也会被编译到dist下面，所以保证src和dist是一个生成关系比较清晰。</li>
+<li>代码抽象。这样的目录结构根据模块到视图这样的层次递进，子层相当于父层的儿子，可以访问父层的共有”方法”, 公有”属性”, 比如user模块的filter, 可以引入common模块的filter作为基类继承。作为统一目录的两个文件夹里面的js不应该存在依赖关系。比如user-list-sidebar里面的模块不能依赖user-list-content里面的模块, 假如要存在依赖管理，那么就提取出公用的部分, 放到上一级目录进行依赖。</li>
+<li><p>关于组件,ui里面的内容。ui里面的内容按照组件分割,其实内容跟模块和视图的概念是一样的啦，为每一个组件创建一个文件夹。</p>
+</li>
+<li><p>app/ // 项目目录</p>
+<ul>
+<li>src/<ul>
+<li>ui/<ul>
+<li>src/<ul>
+<li>common<ul>
+<li>css/</li>
+<li>js/</li>
+</ul>
+</li>
+<li>pagination/<br>css/<br>js/</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>common/</li>
+<li>user/ // 用户模块<ul>
+<li>user-list/ // 用户列表视图<ul>
+<li>filter.coffee</li>
+<li>index.jade</li>
+<li>img/</li>
+<li>sprite/</li>
+<li>scss/</li>
+<li>user-list-sidebar/ // 用户列表左边的子视图<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee</li>
+</ul>
+</li>
+<li>user-list-content/<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>dist/</li>
+<li>user/ // 用户模块<ul>
+<li>user-list/ // 用户列表视图<ul>
+<li>filter.coffee</li>
+<li>index.jade</li>
+<li>img/</li>
+<li>sprite.png</li>
+<li>scss/</li>
+<li>user-list-sidebar/ // 用户列表左边的子视图<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee</li>
+</ul>
+</li>
+<li>user-list-content/<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/" data-id="cj247sjj40007kg361dnwv5ab" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          跨域的option请求
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/30/2015-06-22-shi-yong-alfredde-remotegong-neng-jin-xing-dui-macjin-xing-cao-zuo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用afred用手机唤醒电脑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

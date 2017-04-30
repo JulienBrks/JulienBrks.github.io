@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS规范 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用严格模式。 &amp;apos;use strict&amp;apos;;  使用两个空格缩进, 不实用制表符缩进。 var a = function() {   console.log(&amp;apos;a&amp;apos;); // 两个空格 }  字符串使用单引号。 var a = &amp;apos;a&amp;apos;;  八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。 var a = 0b01; // 二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS规范">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/30/2016-01-25-jsgui-fan/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="使用严格模式。 &amp;apos;use strict&amp;apos;;  使用两个空格缩进, 不实用制表符缩进。 var a = function() {   console.log(&amp;apos;a&amp;apos;); // 两个空格 }  字符串使用单引号。 var a = &amp;apos;a&amp;apos;;  八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。 var a = 0b01; // 二">
+<meta property="og:updated_time" content="2017-04-30T04:22:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS规范">
+<meta name="twitter:description" content="使用严格模式。 &amp;apos;use strict&amp;apos;;  使用两个空格缩进, 不实用制表符缩进。 var a = function() {   console.log(&amp;apos;a&amp;apos;); // 两个空格 }  字符串使用单引号。 var a = &amp;apos;a&amp;apos;;  八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。 var a = 0b01; // 二">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-01-25-jsgui-fan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-01-25-jsgui-fan/" class="article-date">
+  <time datetime="2017-04-30T04:22:52.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS规范
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>使用严格模式。</p>
+<pre><code>&apos;use strict&apos;;
+</code></pre></li>
+<li><p>使用两个空格缩进, 不实用制表符缩进。</p>
+<pre><code>var a = function() {
+  console.log(&apos;a&apos;); // 两个空格
+}
+</code></pre></li>
+<li><p>字符串使用单引号。</p>
+<pre><code>var a = &apos;a&apos;;
+</code></pre></li>
+<li><p>八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。</p>
+<pre><code>var a = 0b01; // 二进制
+var a = 0o; // 八进制
+var a = 0xff; // 十六进制
+</code></pre></li>
+<li><p>二元运算符前面必须使用一个空格保持表达式的整洁。</p>
+<pre><code>var a = 1 + 1;
+</code></pre></li>
+<li><p>紧接左括号之后和紧接右括号之前不应该有空格。</p>
+<pre><code>if (&apos;undefined&apos; === typeof a) {
+  console.log(&apos;a&apos;);
+}
+</code></pre></li>
+<li><p>对象直接量:</p>
+<p> 7.1 起始左括号应当同表达式保持同一行。</p>
+<p> 7.2 每个属性的名值保持一个缩进，第一个属性应当在左花括号后另起一行。</p>
+<p> 7.3 属性名值使用不含引号的属性名，气候紧跟一个冒号，冒号之后跟一个空格，然后才是值。</p>
+<p> 7.4 倘若属性值是函数类型，函数体应当在属性名之下另起一行。</p>
+<p> 7.5 结束的花括号应当独占一行。</p>
+<pre><code>var object = { // 7.1
+  key1: value1, // 7.2
+  key2: value2, // 注意冒号的位置，具体看7.3
+  key3: function() {
+    console.log(&apos;hello world!&apos;); // 7.4
+  }
+} // 7.5
+</code></pre></li>
+<li><p>注释</p>
+<p> 8.1 文字描述之前必须有一个空格</p>
+<p> 8.2 注释上面必须有一空行</p>
+<pre><code>var a = function () {
+
+  // 这是注释
+  console.log(&apos;a&apos;);
+
+  /*
+   * 这是注释
+   */
+  console.log(&apos;a&apos;);
+}
+</code></pre></li>
+<li><p>多行注释继承第八点注释的规范，然后有新增了以下独有的规范</p>
+<p> 9.1 首行仅仅包括/*注释开始。该行不应该有其他文字。</p>
+<p> 9.2 接下来的行以*开头并保持左对齐。这些行可以有文字描述。</p>
+<p> 9.3 最后一行以*/开头比你高同先前行保持对齐。也不应当有其他文字。</p>
+<pre><code>/*
+ * 我是注释
+ * 我是注释
+ */
+</code></pre></li>
+<li><p>注释声明。注释有时候给一段代码声明额外的信息。这些声明的格式以单个单词打头并紧跟一个冒号，然后一个空格，再接上一段描述。可使用的声明如下:</p>
+<p>10.1 TODO: 说明代码还未完成，应当包含下一步要做的事情。<br>10.2 HACK: 表示代码实现走了一个捷径。应当包含为何使用hack。<br>10.3 XXX: 说明代码是有问题的并应当尽快修复。<br>10.4 FIXME: 说明代码是有问题的并应当尽快修复。重要性略次于XXX。<br>10.5 REVIEW: 说明代码任何可能的改动都需要评审。</p>
+<pre><code>// TODO: 需要增加某某功能
+doSomethins();
+</code></pre></li>
+<li><p>变量声明。</p>
+<p>11.1 一定要先声明后使用</p>
+<p>11.2 使用一个var表达式每行一个变量</p>
+<p>11.3 多一层缩进，让变量名首字母对齐(由于使用两个空格缩进，所以变量名的首字母会对齐)</p>
+<pre><code>function a() {
+  var count = 10,
+      name = &apos;Jack&apos;; // 11.2 一个var表达式
+}
+</code></pre></li>
+<li><p>函数声明</p>
+<p>12.1 函数先声明后使用。</p>
+<p>12.2 函数名和开始圆括号之间不应当有空格。</p>
+<p>12.3 匿名函数的function关键字与左括号之间不能有空格。</p>
+<p>12.3 结束的圆括号和右边的花括号之间应该留一个空格。</p>
+<p>12.4 右侧的花括号应当同function关键字保持在同一行。</p>
+<p>12.5 立即被调用的函数应当在函数调用的外层用圆括号包裹。</p>
+<pre><code>function a() {
+
+}
+
+var a = function() { // 12.3 function之后没有空格
+
+}
+
+// 12.5
+var a = (function() {
+  console.log(&apos;a&apos;);
+})();
+</code></pre></li>
+<li><p>命名。</p>
+<p>13.1 使用驼峰法</p>
+<p>13.2 变量名的第一个单词是一个名词</p>
+<p>13.3 函数命名，第一个单词为动词</p>
+<p>13.4 构造函数，第一个字母大写</p>
+<p>13.5 常量，全部大写</p>
+</li>
+<li><p>等号运算符, 使用严格等于(===)代替等于(==)来避免弱类型转换错误。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-01-25-jsgui-fan/" data-id="cj247sjl20016kg36781how0q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/2016-01-22-javascriptdai-ma-gui-fan/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS规范
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/30/2016-03-01-qie-huan-hostswen-jian-zhi-hou-chromeliu-lan-qi-you-dnshuan-cun-mei-you-qie-huan-de-bugxiu-fu/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何清除chrome的dns缓存</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

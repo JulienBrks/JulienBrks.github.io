@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用transform的translate进行居中 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天看到一个网站看到里面的主要内容会根据屏幕高度的变化而自动变化，始终处在垂直居中的位置，然后查看了源码，发现里面有top: 50%;我就奇怪了，为什么使用top: 50%;还会居中呢？看里面的写法，应该使用绝对定位，然后left, right, top和bottom为0，设置高度和宽度，然后margin: auto,才可以的呀，不过我又注意到下面的transform的写法，发现了translat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用transform的translate进行居中">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/25/2015-05-26-shi-yong-transformjin-xing-bu-zhi-gao-du-nei-rong-de-chui-zhi-ju-zhong/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="今天看到一个网站看到里面的主要内容会根据屏幕高度的变化而自动变化，始终处在垂直居中的位置，然后查看了源码，发现里面有top: 50%;我就奇怪了，为什么使用top: 50%;还会居中呢？看里面的写法，应该使用绝对定位，然后left, right, top和bottom为0，设置高度和宽度，然后margin: auto,才可以的呀，不过我又注意到下面的transform的写法，发现了translat">
+<meta property="og:image" content="https://julienbrks.github.io/content/images/2015/05/BF379848-9DEE-4737-B94F-988A02A3F8C1.png">
+<meta property="og:updated_time" content="2017-04-25T15:39:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用transform的translate进行居中">
+<meta name="twitter:description" content="今天看到一个网站看到里面的主要内容会根据屏幕高度的变化而自动变化，始终处在垂直居中的位置，然后查看了源码，发现里面有top: 50%;我就奇怪了，为什么使用top: 50%;还会居中呢？看里面的写法，应该使用绝对定位，然后left, right, top和bottom为0，设置高度和宽度，然后margin: auto,才可以的呀，不过我又注意到下面的transform的写法，发现了translat">
+<meta name="twitter:image" content="https://julienbrks.github.io/content/images/2015/05/BF379848-9DEE-4737-B94F-988A02A3F8C1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-05-26-shi-yong-transformjin-xing-bu-zhi-gao-du-nei-rong-de-chui-zhi-ju-zhong" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/25/2015-05-26-shi-yong-transformjin-xing-bu-zhi-gao-du-nei-rong-de-chui-zhi-ju-zhong/" class="article-date">
+  <time datetime="2017-04-25T15:39:07.000Z" itemprop="datePublished">2017-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用transform的translate进行居中
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天看到一个<a href="http://www.mobilebone.org/" target="_blank" rel="external">网站</a><br>看到里面的主要内容会根据屏幕高度的变化而自动变化，始终处在垂直居中的位置，然后查看了源码，发现里面有<code>top: 50%;</code><br><img src="/content/images/2015/05/BF379848-9DEE-4737-B94F-988A02A3F8C1.png" alt=""><br>我就奇怪了，为什么使用<code>top: 50%;</code>还会居中呢？看里面的写法，应该使用绝对定位，然后left, right, top和bottom为0，设置高度和宽度，然后<code>margin: auto</code>,才可以的呀，不过我又注意到下面的transform的写法，发现了<code>translateY(-50%)</code>的写法，我才意识到可能是另一种垂直居中方式，果断去google了一下，发现还真有人总结了这样的方法，<a href="http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/" target="_blank" rel="external">点击查看</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/25/2015-05-26-shi-yong-transformjin-xing-bu-zhi-gao-du-nei-rong-de-chui-zhi-ju-zhong/" data-id="cj247sjid0000kg36d61n2tf2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/25/2015-05-26-zhu-liu-shou-ji-dan-ye-gun-dong-xiao-guo-de-chang-kuan-bi-li-de-zui-da-zhi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          主流手机单页应用的背景设置一些思考总结
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

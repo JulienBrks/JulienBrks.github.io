@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JulienBrks的博客">
+<meta property="og:url" content="https://julienbrks.github.io/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JulienBrks的博客">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2015-07-28-centosan-zhuang-tmux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/" class="article-date">
+  <time datetime="2017-04-30T04:45:18.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、使用git下来源码<br>2、进入项目目录 <code>sh autogen.sh</code><br>3、<code>make</code><br>4、<code>sudo make install</code></p>
+<h6 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题:"></a>遇到的问题:</h6><ul>
+<li>perl有提示”perl: warning: Setting locale failed”<br>解决方法如下：</li>
+</ul>
+<blockquote>
+<p>1、 Edit your user bash_profile</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi .bash_profile</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2、Insert the following:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export LANGUAGE=en_US.UTF-8</div><div class="line"></div><div class="line">export LANG=en_US.UTF-8</div><div class="line">export LC_ALL=en_US.UTF-8</div></pre></td></tr></table></figure>
+<blockquote>
+<p>3、Rerun your Bash Profile</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. ~/.bash_profile</div></pre></td></tr></table></figure>
+<p><a href="http://derrick-caluag.blogspot.com/2013/03/annoying-perl-warning-setting-locale.html" target="_blank" rel="external">参考链接</a></p>
+<ul>
+<li>遇到如下错误:<blockquote>
+<p>tmux: error while loading shared libraries: libevent-2.0.so.5: cannot open shared object file: No such file or directory</p>
+</blockquote>
+</li>
+</ul>
+<p>解决办法:<br><code>ln -s /usr/local/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5</code></p>
+<p><a href="http://www.nigeldunn.com/2011/12/11/libevent-2-0-so-5-cannot-open-shared-object-file-no-such-file-or-directory/" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-28-centosan-zhuang-tmux/" data-id="cj247sjjh000ekg36v9bnkih5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/" class="article-date">
+  <time datetime="2017-04-30T04:44:56.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">perl: warning: Setting locale failed.</div><div class="line">perl: warning: Please check that your locale settings:</div><div class="line">     LC_ALL = &quot;En_US&quot;,</div><div class="line">     LANG = (unset)</div><div class="line">are supported and installed on your system.</div><div class="line">perl: warning: Falling back to the standard locale (&quot;C&quot;).</div></pre></td></tr></table></figure></p>
+<p>只有在~/.zshrc, ~/.bashrc, ~/.cshrc文件后面增加下面几句话就好了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># This setting is for the new UTF-8 terminal support</div><div class="line">export LC_CTYPE=en_US.UTF-8</div><div class="line">export LC_ALL=en_US.UTF-8</div></pre></td></tr></table></figure></p>
+<p>以上所述方法来自<a href="http://blogs.law.harvard.edu/hoanga/2008/04/10/fixing-that-really-irritating-perl-warning-setting-locale-failed-on/" target="_blank" rel="external">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/" data-id="cj247sjjy000kkg36seq98x12" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/" class="article-date">
+  <time datetime="2017-04-30T04:37:49.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在safari浏览器上开发官网发现有一个span元素始终无法设置font-size。在网上搜索后发现webkit浏览器会有私有的-webkit-text-size-adjust属性，用于自动调整字体，方便阅读。</p>
+<p>解决方式:</p>
+<ul>
+<li>可以使用<code>-webkit-text-size-adjust: none</code>则可以禁用浏览器的字体自动调整。</li>
+<li>可以将span元素的css属性display-block, 浏览器不会对对内表现为block的元素的字体进行自动调整。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/" data-id="cj247sjir0002kg36df9veotw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-06-11-ji-zhu-ren-xi-huan-de-gong-si" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/" class="article-date">
+  <time datetime="2017-04-30T04:37:47.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近感觉做事没有之前那么有激情了，也许是因为项目已经完成了大部分，也是是因为上帝的玩笑(让自己喜欢的人来了又走了)，心情比较沉闷。</p>
+</blockquote>
+<p>  来到X公司快有1个年头了，这个公司给我最主要的印象是老板做事风格雷厉风行，项目推进和产品迭代非常快速，经常是一个任务早上过来，晚上就要上线的节奏，其实做的页面都是千篇一律(基本都是列表加上详情)，必须得加班才能完成任务。相比之前，最近前端的任务明显少了很多，而且也没有明确的上线日期，毕竟现在主要是给公司内部员工做系统，属于优化内容，不是那种没了公司节奏就会拖慢很多的东西。</p>
+<p>也许是因为现在做的基本上都是维护的东西，所以感觉没有了多少激情，我是那种喜欢学习新东西的人，但是让我每天要维护自己的代码，总是有种提不起精神来。</p>
+<p>除此之外，我觉得主要是开始厌恶公司的一些文化了，其实之前已经有过很多次想法，但是我总能以”年轻人多吃点苦”安慰自己, 而自从最近有几个比较好的同事走了之后，这句话也不起作用了，我开始认真思考公司制度或者文化上的一些问题。</p>
+<p>在”小姐”走了之后，我在朋友圈中发了一条微信，大概内容为”工程师频繁离职，是IT圈的惯性还是公司体制的问题？”那天老板早上就过来每一个工程师问过去，问最近开发遇到的问题和一些想法, 不知道是不是巧合(反正我没有加老板的微信)。然后那一天就由老板牵头进行了一次技术部的重组，提出了流程开发的大循环和团队内部持续优化的小循环的一些指导意见和规范。</p>
+<p>这次重组之前已经进行过一次重组的，那一次是老板牵头直接找项目总监讨论确定的，经过这些的折腾我都有点累了。</p>
+<p><strong>团队与自我。</strong>也许是因为前端来了一个高级工程师，我现在都有点不想当这个组长了，总感觉让一个年龄比自己大好多的人做事情不太好。让我感觉到累的另一方面是在这样的一个team里面没有让我感觉到自己能够进步，其实我是不愿意做一个分配任务的人，我是一个愿意跟牛逼的人做一些新奇的，有挑战性任务的人，但是比较遗憾的是身边的人很多也都是只埋头做业务，似乎对于新技术不那么热爱，也不太喜欢分享。跟我理想中，跟一群追求技术潮流的geeker做了不起的事情相差太远了。</p>
+<p>最近离职的一个喜欢的女生也让我心情有点低落。她是一个外表清秀的女生，有想法，看到她也看到了当时的我，努力在快速迭代和代码质量之间寻找平衡，不是那种将就的人，她没有缓过来，因为作为一个刚入职不到一周的新人，而且要面对没有注释和文档的代码，又要被迫接受坑爹的产品上线时间要求，我觉得假如是我，我也无法挺过去，何况一个女生呢。PS: 通宵那一天明明有三个android工程师，但是其余两个男工程师却根本没有帮助她的意思，一个还在睡觉，真是让我对这样的团队失望，别说她了。听过她最近找到了一家她喜欢的公司和一群她愿意工作的人，我还是挺替她欣慰的，加油！也许在不久的将来我们可以继续共事呢:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/" data-id="cj247sjj00005kg36gvggrpy7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-06-15-optionqing-qiu-shi-shi-yao" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/" class="article-date">
+  <time datetime="2017-04-30T04:37:19.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨域的ajax请求，浏览器会自动发送option请求。</p>
+<p>目的: 询问远程服务器是否支持请求方法，请求域名，请求头之类的信息。 只有对方服务器认为支持上述的方法后，才允许后续的请求发生，所以我们经常看到经常在get或者post请求之前都会有一个option请求。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/" data-id="cj247sjj20006kg36kx3i6esx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/" class="article-date">
+  <time datetime="2017-04-30T04:37:09.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/">我忍为比较好的文件夹设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们来看下文件夹的作用，将一批文件作为一个最小单位进行操作，它的主要功效是让批量操作变得非常简单。但是深层次的文件夹使阅读非常不方便，这个可以通过优化文件夹的创建方式解决这个问题。</p>
+<p>在一个前端项目中，其实最需要做的是组件化，不断细化最小组件，充分复用。当然对于大项目来讲的话，还有一个层次就是业务模块。最后一点就是整个项目的开发层次划分，对于angular的项目，一般存在filter, directive和service等分层。那么如何根据这些进行合理的分层呢？</p>
+<p>我觉得以可视化页面层级进行分文件夹会更好，然后将某一个视图下面需要的coffee直接挂到那个视图下面, 对于js,我觉得就按照上面的规则进行判断是否创建文件夹就好了。</p>
+<ul>
+<li>按照模块进行分层:我觉得对于一个比较大型的项目来讲的话，我觉得能够将整个项目按照业务模块来分是非常有必要的。主要是能够保证每一个业务模块都是独立的，能够保证业务模块能够进行非常容易的迁移(或者重命名,或者删除)。那么如何处理一个单独的视图(页面)呢？我认为也是给专门的文件夹会好一点，理由跟上面类似。</li>
+<li>将filter, service, template,directive分离是较好的。因为相较于将js放到一个文件，分离方便我们找到相对应的功能文件。那么要不要给专门的文件夹呢？我认为没有必要的, 因为假如我们的视图能够足够原子化，能够自给自足的话,filter,service这些功能模块的划分不符合文件夹的好处, 那就是不符合能够批量删除,修改和重命名的好处。</li>
+<li>但是对于img, css的静态资源文件, 我觉得还是要创建一个img文件夹, css文件夹(也可以命名为less, scss或者sass)作为静态资源存放的地方，但是img下面就不要再创建文件夹了，因为一个视图所需要的图片就是一个集合。</li>
+<li>关于sprite, 我的建议是创建一个sprite文件夹, 作为等待合并的小图标</li>
+<li>src作为源代码文件, dist作为可以运行的文件夹</li>
+<li>对于公用的组件库, 我的建议是放到src文件夹下面作为”子模块”引入，因为它也会被编译到dist下面，所以保证src和dist是一个生成关系比较清晰。</li>
+<li>代码抽象。这样的目录结构根据模块到视图这样的层次递进，子层相当于父层的儿子，可以访问父层的共有”方法”, 公有”属性”, 比如user模块的filter, 可以引入common模块的filter作为基类继承。作为统一目录的两个文件夹里面的js不应该存在依赖关系。比如user-list-sidebar里面的模块不能依赖user-list-content里面的模块, 假如要存在依赖管理，那么就提取出公用的部分, 放到上一级目录进行依赖。</li>
+<li><p>关于组件,ui里面的内容。ui里面的内容按照组件分割,其实内容跟模块和视图的概念是一样的啦，为每一个组件创建一个文件夹。</p>
+</li>
+<li><p>app/ // 项目目录</p>
+<ul>
+<li>src/<ul>
+<li>ui/<ul>
+<li>src/<ul>
+<li>common<ul>
+<li>css/</li>
+<li>js/</li>
+</ul>
+</li>
+<li>pagination/<br>css/<br>js/</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>common/</li>
+<li>user/ // 用户模块<ul>
+<li>user-list/ // 用户列表视图<ul>
+<li>filter.coffee</li>
+<li>index.jade</li>
+<li>img/</li>
+<li>sprite/</li>
+<li>scss/</li>
+<li>user-list-sidebar/ // 用户列表左边的子视图<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee</li>
+</ul>
+</li>
+<li>user-list-content/<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>dist/</li>
+<li>user/ // 用户模块<ul>
+<li>user-list/ // 用户列表视图<ul>
+<li>filter.coffee</li>
+<li>index.jade</li>
+<li>img/</li>
+<li>sprite.png</li>
+<li>scss/</li>
+<li>user-list-sidebar/ // 用户列表左边的子视图<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee</li>
+</ul>
+</li>
+<li>user-list-content/<ul>
+<li>index.jade</li>
+<li>filter.coffee</li>
+<li>service.coffee </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-16-wen-jian-mu-lu-jie-gou-de-dian-xiang-fa/" data-id="cj247sjj40007kg361dnwv5ab" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-06-22-shi-yong-alfredde-remotegong-neng-jin-xing-dui-macjin-xing-cao-zuo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-22-shi-yong-alfredde-remotegong-neng-jin-xing-dui-macjin-xing-cao-zuo/" class="article-date">
+  <time datetime="2017-04-30T04:36:59.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-06-22-shi-yong-alfredde-remotegong-neng-jin-xing-dui-macjin-xing-cao-zuo/">使用afred用手机唤醒电脑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>买了alfred已经有一个月了，但是还只是用了它一小部分的功能。据说它有一个工作流的功能非常叼，于是乎今天就想尝试一下这一部分的功能，马上就想到了一个应用场景，那就是手机一键唤醒电脑，不需要每一次都要输入密码和回车。</p>
+<p>谷歌了很多，没有发现太多的东西，而且被引到了一个叫做WOL(Wake on Lan)的东西，然后又尝试去下载了几个app，当时还想着只要其他应用也能够做到一键完成我需要的功能也行，可是下了很多应用居然都没有我想要的效果，因为他们都没有输入密码的输入框，试了很多错，现在始终还不知道他们所谓的”Wake Up”是什么意思。</p>
+<p>对于这种稀缺的问题，可能应用场景比较少见把，一般人很少会像我一样懒到不想输入密码。于是我更换了很多搜索关键词，终于黄天不负有心人，在一个alfred论坛上面，看到有人写了一篇<a href="http://www.alfredforum.com/topic/5491-remote-key%E3%80%8Cunlock-mac-with-alfred-remote%E3%80%8D/" target="_blank" rel="external">帖子</a>，下面出人意料得没有一个回帖的(看来只有作者跟我一样无聊了把)。他就分享了如何使用alfred的remote完成唤醒电脑然后输入密码的功能。</p>
+<p>我看了以下代码，然后修改了一点东西，由于他使用keychain，但是我不怕密码泄露，所以直接将需要放密码的地方直接改成自己的密码。</p>
+<p>以下是我修改后的代码:<br><img src="/content/images/2015/06/6945E9A9-7FF5-479D-BDC8-869EF87077BD.png" alt=""><br>核心的两块内容都用红框标出来了。</p>
+<p>这样只有在手机和电脑都在都一个网段下面，就可以使用手机操作电脑了，Cool。但是晚上将这个功能演示给室友看了，他说然而并没有什么卵用，不过我还是感觉很爽的，毕竟是自己买的东西，总要发挥一点价值，不管是有意义还是没有意义，而且人生又不是为有意义没有意义而活的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-22-shi-yong-alfredde-remotegong-neng-jin-xing-dui-macjin-xing-cao-zuo/" data-id="cj247sjj50008kg36cztpdq7g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-06-24-deng-lu-mi-ma-jia-mi-ce-lue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-06-24-deng-lu-mi-ma-jia-mi-ce-lue/" class="article-date">
+  <time datetime="2017-04-30T04:36:29.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-06-24-deng-lu-mi-ma-jia-mi-ce-lue/">登录密码设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Version 1: 直接使用md5加密放入数据库</p>
+<blockquote>
+<p>问题: 假如其他人知道所有加密后的密文, 使用碰撞方法可以很快获取常见的密码, 用户简单的密码很容易破解。</p>
+</blockquote>
+</li>
+<li><p>Version 2: 将md5加密后的的密文截断后放入数据库。</p>
+<blockquote>
+<p>问题: 其他人由于保存了加密字典，依旧可以通过模糊匹配密文，得到可能存在的明文, 然后进行暴力破解, 破解难度比之前打了很多，截断了字符越多，对于破解难度越大, 但是能够容许的用户数量就减少得越多。</p>
+</blockquote>
+</li>
+<li><p>Version 3: 由于用户会存一个数据字典，所以为了不让用户的数据字典能够使用整个库的所有密码，可以增加一个根据用户不同而不同的随机数，进行加密如下代码<code>md5(md5(password) + salt)</code>，这样其他人就需要为每一个密码都要建立一个数据字典，由于两个帐号的同一个密码在数据库里面存在的密码摘要是不同的，所以就需要为每一个用户进行一次碰撞破解，比较前两种难度更大了。</p>
+</li>
+</ul>
+<p>以上都是为了让其他人不太可能通过”碰撞方式”知道用户的明文。<br>但还有以下的问题，但一般网站不需要优化。<br>1、其他人可以直接通过网络截取，然后再次发送截取到的信息同样可以模拟用户登录。这个问题还是使用https来解决这个问题把。<br>2、前端加密传输后，一定要记住给js代码进行代码混淆，防止知道计算方式。当然后端可以进行二次加密再放入数据库，更加保险。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-06-24-deng-lu-mi-ma-jia-mi-ce-lue/" data-id="cj247sjj70009kg36it36iww9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-07-08-javascriptde-keng" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-08-javascriptde-keng/" class="article-date">
+  <time datetime="2017-04-30T04:36:20.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-08-javascriptde-keng/">js一些容易犯的错误</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>parseInt([12, 13]) === 12 这个表达式成立，不够严谨</li>
+<li>js存在声明提升，所以在函数作用域内，尽管声明语句在最后，它也会在编译的时候放到函数最前面声明，相当于优先执行<code>var a;</code></li>
+<li>同一个标识符的情况下，变量声明与函数声明都会提升；函数声明会覆盖变量声明，但不会覆盖变量赋值，即：如果声明变量的同时初始化或赋值那么变量优先级高于函数。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-08-javascriptde-keng/" data-id="cj247sjja000akg36ntercid4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-07-09-jqueryde-ajaxbu-hui-zi-dong-jiang-cookiechuan-dao-fu-wu-qi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-09-jqueryde-ajaxbu-hui-zi-dong-jiang-cookiechuan-dao-fu-wu-qi/" class="article-date">
+  <time datetime="2017-04-30T04:35:47.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-09-jqueryde-ajaxbu-hui-zi-dong-jiang-cookiechuan-dao-fu-wu-qi/">跨域session cookie共享</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原因: 由于跨域请求的两个域的session cookie是不一样的，所以我们发起一个跨域请求时，本域的session cookie不会放到跨域请求的Set-Cookie头里面。</p>
+<p>可以通过参数增加xhrFields字段解决这个问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">   url: a_cross_domain_url,</div><div class="line">   xhrFields: &#123;</div><div class="line">      withCredentials: true</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>但是这样有一个问题，那么就是服务端不能够设置   ‘Access-Control-Allow-Origin’: ‘*’, 必须指定某些域才行。</p>
+<p>PS: 假如这个域自己能够管理的，那么就使用反向代理到同一个域下面，但是这样往往不好。所以跨域请求就不要使用session cookie的，因为http本身就是一个无状态的协议，而session cookie是上一个时代服务器session遗留的产物，就不用使用啦，可以通过token能方式进行认证交互啦。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-09-jqueryde-ajaxbu-hui-zi-dong-jiang-cookiechuan-dao-fu-wu-qi/" data-id="cj247sjjb000bkg36o89hws8c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

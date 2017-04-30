@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JulienBrks的博客">
+<meta property="og:url" content="https://julienbrks.github.io/page/4/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JulienBrks的博客">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/" class="article-date">
+  <time datetime="2017-04-30T04:25:32.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/">textarea按照内容高度变化而变化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天有一个同事遇到一个问题，那就是设计师要求输入框(也就是textarea)的高度能够随着内容高度的变化而变化，也就是不出现垂直方向上的滚动条。</p>
+<p>然后他尝试通过设置定时器让textarea的高度始终等于scrollHeight解决这个问题:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setInterval(function() &#123;</div><div class="line">	document.getElementById(&apos;textarea&apos;).style.height = document.getElementById(&apos;textarea&apos;).scrollHeight;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>不断输入内容，高度增加的时候，确实textarea的高度也增加了。但是内容减少的时候，发现textarea的高度却不会减少。这是由于scrollHeight的高度其实反应着height的高度，textarea内容的高度减少，不能减少scrollHeight的值。<br>例子如下:</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/JulienBrks/d9yna9fa/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h4 id="我的解决方式"><a href="#我的解决方式" class="headerlink" title="我的解决方式:"></a>我的解决方式:</h4><p>由于不能获取textarea的内容高度，所以我想到使用一个p标签模拟textarea，始终保持p标签的内容跟textarea的内容一样，然后获取p标签的高度设置textarea的高度，就能够让textarea的高度随着内容高度变化二自动变化了。<br>例子如下:</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/JulienBrks/nc2gcemv/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><p>1、p标签和textarea的字体，字号，宽度，行高，word-break样式保持一致<br>2、p标签要保证<code>white-space: pre-wrap</code>，这样回车的时候也能够让p标签的高度增加</p>
+<h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题:"></a>存在的问题:</h4><p>1、p标签存在连续多个回车的时候，textarea会出现滚动条，由于textarea最后一个回车会占一行，但是p标签不会。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-15-chuang-jian-gao-du-sui-zhao-nei-rong-zi-dong-bian-hua-de-textarea/" data-id="cj247sjkn000zkg36qsr9rahq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-12-17-jian-shen-ji-hua" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-17-jian-shen-ji-hua/" class="article-date">
+  <time datetime="2017-04-30T04:25:14.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-12-17-jian-shen-ji-hua/">健身入坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="序"><a href="#序" class="headerlink" title="序:"></a>序:</h4><p>周二收到一个电话，来自百顺健身的(我在那边办了会员卡)，说要给我体检，第一时间我就想到又是私教想要招学员，本来想直接回绝的。但是电话那头的声音非常好听(是女教练)，而且讲话也非常得体，所以我就抱着反正我可以到那边再拒绝的态度答应了。然后周二去聊的时候那个教练做完体检就给我分析我的问题，其实这些问题我平时也注意到了，比如肌肉太少啦，身体水分少啦(肌肉少，所以一般水分就会少)，肚子上有赘肉啦，身体左右两边不协调啦，有长短腿啦，然后还有脊椎不太正常啦等等。</p>
+<h4 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h4><p>然后她就开始跟我谈价格，从1千8谈到1千，说的我好心动，可是后来发现其实也没有便宜(250rmb/节)，这是后话。当时我是这么想的：  </p>
+<ol>
+<li>身体确实需要锻炼，而且花这么点钱算得了什么，反正平时也没有什么地方可以花钱，投资身体不更好;</li>
+<li>当时有跟小海燕聊暧昧，也希望能够有一个好的身型；</li>
+<li>当时看着这教练挺漂亮的，本人对漂亮的东西一向没有多少抵抗力。</li>
+</ol>
+<p>所以就开始了我的介绍私教指导健身的日子。</p>
+<h4 id="填坑第一天"><a href="#填坑第一天" class="headerlink" title="填坑第一天"></a>填坑第一天</h4><p>钱花下去了，可不能够就这么浪费掉。今天是第一天教练带着训练，第一天主要锻炼了自由力量，肌耐力，固定器械练习。</p>
+<h5 id="热身"><a href="#热身" class="headerlink" title="热身"></a>热身</h5><p>跑步机上热身了十分钟，主要保证流汗，身体能够热起来。</p>
+<h5 id="自由力量"><a href="#自由力量" class="headerlink" title="自由力量"></a>自由力量</h5><h6 id="腹肌训练"><a href="#腹肌训练" class="headerlink" title="腹肌训练"></a>腹肌训练</h6><p>基本组:</p>
+<p>热完身，教练就带着去做腹肌的锻炼了。首先让我做了25个身体不到底的仰卧起坐，双手放平，然后曲腿，手臂水平放地上，然后靠腹部的力量让身体起来，这一组主要做了中腹和上腹的训练。就当是给腹肌热身把。</p>
+<p>要领: 1.5s一个动作，身体起来的时候呼气，身体下来的时候吸气。这点下面的很多动作都是这样子的。就是呼气的时候起到训练的效果，吸气的时候起到放松的效果。</p>
+<p>锻炼两侧腹肌:</p>
+<p>然后就是做两边的腹肌，侧着做曲腿，然后勾手扶后脑门，另一只手垂直身体平放，然后曲腹肌，尽量保证手肘跟腿的膝盖碰到。</p>
+<p>要领: 保证身体下来的时候，上身和腿不要着地。</p>
+<p>下腹:</p>
+<p>腿部伸直，抬起来，然后手伸直先放到膝盖，然后上推上半身，让手指尽量碰到脚尖。</p>
+<p><code>扑腾</code>(姑且叫这个把):</p>
+<p>趴着，然后手脚不要离地，手脚同时起来，重复。</p>
+<h6 id="胸肌训练"><a href="#胸肌训练" class="headerlink" title="胸肌训练"></a>胸肌训练</h6><p>今天学到了俯卧撑的一些动作要领，还是挺不错的。花了钱就是不一样，从我专门写一篇博客来记录就足以见得。扯回来，主要是要保证屁股能够抬起来，然后整个上半身保持水平，然后下去的时候，能够保证身体能够同时下去。然后保证下去的时候，整个上半身尽量到底。</p>
+<h6 id="肌耐力"><a href="#肌耐力" class="headerlink" title="肌耐力"></a>肌耐力</h6><p>主要是锻炼了肱二头肌，肱三头肌。通过锻炼发现右手果然比左手好用多了。左手就是个废材。。</p>
+<p>####### 肱二头肌<br>今天肱二头肌主要从两个动作入手练习了。第一个是<code>坐姿划船</code>，姑且叫这个把。就是挺着背坐着，稍微向要做动作的那一只手的方向倾斜，然后不做动作的一只手搭在膝盖上面，另一只手肘搭在靠近膝盖的地方，然后拿哑铃从90度到60度的样子，持续做12个左右，然后休息十五秒继续做。由于为了锻炼肌肉的耐力，和对于发力的把握，所以哑铃要稍微重一点，我的右手是10公斤，左手是8公斤，然后尽量做到力竭。发现有一个人能够在旁边帮助还是很有用的，她可以再你快要力竭但是还有点力气的时候抬一手，帮助做到力竭。</p>
+<p>注意要领:<br>提哑铃的时候不要移动背部和肩部，保持手腕也不要动，手腕能够做到跟手臂水平。提哑铃的那只手的手肘放到膝盖比较近的地方。最好能有个人帮忙抬一下。要感觉发力点；要感觉发力点；要感觉发力点；</p>
+<p>还有一个动作是坐着然后双手的大臂可以放到可以靠的地方，然后重复抬举哑铃。这个确实能够保证不使用身体的力量。</p>
+<p>####### 肱三头肌<br>这是最难得，没想到比肱二头肌还要难。就是双脚分开站，然后上半身向前倾，上半身挺胸收腹，挺直，然后手臂垂直放下，手心朝身体，然后举起哑铃手臂向后。</p>
+<p>注意要领: 要感觉发力点；要感觉发力点；要感觉发力点；上半身尽量往前倾，然后挺直，手臂放松要自然。</p>
+<h6 id="胸肌"><a href="#胸肌" class="headerlink" title="胸肌"></a>胸肌</h6><p>做了练习胸肌的器械。主要是学习器械的用法，要<code>保证胸线在推手的高度</code>，不太理解。最后教练让我坐到最低，然后练习下面的推手。做的时候屁股，背部，头部头要靠这背部，然后发力的时候不要耸肩，手腕和手臂也要水平向前推，推的时候要保证呼气，然后拉回来要吸气。尽量要感觉推的时候胸大肌是有在发力。</p>
+<p>####### 拉伸<br>发现拉伸真的很重要，教练教导了一些平时的拉伸动作。</p>
+<p>腹肌做完之后使用狗爬式和婴儿式拉伸腹肌。</p>
+<p>比如拉肱三头肌，伸懒腰，十字拉手臂，手指合拢向头后拉伸背部和肩。</p>
+<h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><p>上面记录的可能有些杂，主要也是为了能够将教练教的记录下来，然后后面两次自己练习然后忘记的时候能够帮助记起来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-17-jian-shen-ji-hua/" data-id="cj247sjkm000ykg36l16ctj0q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-12-18-xie-da-yin-htmlye-mian-de-zhu-yi-shi-xiang" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-18-xie-da-yin-htmlye-mian-de-zhu-yi-shi-xiang/" class="article-date">
+  <time datetime="2017-04-30T04:25:02.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-12-18-xie-da-yin-htmlye-mian-de-zhu-yi-shi-xiang/">浏览器打印注意不要使用背景</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不要使用背景!!!</p>
+<p>查了很多方法，发现使用背景兼容性不高。就算使用了背景，网页打印的时候默认不会打印背景颜色或者用户打印的时候可能会选择不打印背景。所以老老实实使用img标签替代背景把。</p>
+<p>假如一定要使用背景的话，可以通过<code>-webkit-print-color-adjust: exact;</code>这句话完成webkit内核可以打印背景。</p>
+<p>不过有以下注意事项:</p>
+<ul>
+<li><p>不过高版本的webkit必须为背景加上<code>!important</code>才行，而且背景元素的子元素的颜色也需要使用<code>!important</code>来保证颜色生效。</p>
+</li>
+<li><p>而且使用这句话<code>-webkit-print-color-adjust: exact;</code>之后父元素的字体颜色不会继承到子元素，所以要为子元素单独设置颜色才行的。</p>
+</li>
+<li><p><code>-webkit-print-color-adjust: exact;</code>这句话可以在跟元素上应用，那么子元素的背景都能够被打印。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-18-xie-da-yin-htmlye-mian-de-zhu-yi-shi-xiang/" data-id="cj247sjkq0010kg36il2f7gcr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-12-24-shi-yong-zi-ti-de-keng" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-24-shi-yong-zi-ti-de-keng/" class="article-date">
+  <time datetime="2017-04-30T04:24:42.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-12-24-shi-yong-zi-ti-de-keng/">浏览器打印的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天想打印一个页面，这个页面是批量生成的，发现每一次打印都无法打印字体，我还以为是浏览器渲染比较慢导致的。后来查询了很多浏览器的事件触发机制，发现始终会有这样的问题。后来我想到便利每一个元素的文字内容，只有等待文字内容全部被渲染完毕之后再触发print()。但是发现还是不成功，发现页面很快就出现了打印弹窗，然后发现其实文字已经被加入到dom结构里面了。然后我才开始怀疑是字体的问题，果然，我不使用外部字体就解决了这个问题。</p>
+<p>我发现打印似乎会等待页面内容渲染完之后再进行打印，当然它不会等待外部字体的渲染。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-24-shi-yong-zi-ti-de-keng/" data-id="cj247sjks0011kg36grk3lgrg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-12-27-jian-shen-di-er-jie-ke" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-12-27-jian-shen-di-er-jie-ke/" class="article-date">
+  <time datetime="2017-04-30T04:24:26.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-12-27-jian-shen-di-er-jie-ke/">健身记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天教练先让我巩固了一些锻炼胸肌的器械，今天又纠正了学习过程中遇到的问题，教练将座位调整到了最高，然后让我握最上面的把。然后继续锻炼胸肌发力的感觉和规范使用器械，还是那句话，就是感觉胸肌在发力，然后想尽办法找出其他地方可能会借力的错误姿势，然后保证其他地方不会发力，只有胸肌发力。假如这个办法行不通，那么就靠自己感觉了，只要感觉是胸肌在发力就够了。然后发力的时候呼气这点还是需要记住。还有练习胸肌的时候，肩膀不要耸起来发力，后面的肩胛骨收缩，这样能够辅助保证是胸在发力。然后还要注意就是大臂一定要夹紧。</p>
+<p>然后教练带我”仰着推胸”，也是锻炼胸肌的。仰着，屈膝，脚放到地上支撑，手背朝着头，大臂水平放置，然后小臂拖着哑铃放到胸的上面，然后使用胸部的力量将哑铃网上推。有几个要点。</p>
+<ol>
+<li>肩胛骨一定要夹紧。</li>
+<li>肩膀要放松</li>
+<li>不要使用肩部的力量<br>但是始终找不准胸肌发力的点，所以以失败告终了。这一块自己在器械的使用一定要好好感受才行。</li>
+</ol>
+<p>接着锻炼了肱二头肌，借助器械。就讲讲今天不规范的地方把。</p>
+<ol>
+<li>一定要挺胸收腹，然后身体坐直</li>
+<li>然后上半身不要缩在一起，就是肩膀不要圆起来</li>
+<li>用心感受，千万不要使用肩膀的力量</li>
+</ol>
+<p>接着教练带我锻炼了背部的力量。首先人站直，然后慢慢将屁股向后坐，同时上半身，身体挺直向前下倾，同时膝盖微曲，然后使用腰部的力量将上半身抬起来。下面介绍主要几个要点:</p>
+<ol>
+<li>上半身一定要挺直</li>
+<li>膝盖微曲</li>
+<li>尽量屁股下坐深一点，这样上半身也能下得更低，抬起来的时候效果更好</li>
+</ol>
+<p>然后就是放松,教练给腰部按摩了。  </p>
+<ol>
+<li>放松胸部: 然后双手十指交叉放到脑后，将手肘往后拉，达到给胸部放松的作用。</li>
+<li>放松肩部: 将一只手放到另一边的肩胛骨的未知，然后小臂自然下垂，然后往下压达到肩部放松的作用。另一只手同理。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-12-27-jian-shen-di-er-jie-ke/" data-id="cj247sjku0012kg36u1u3nox8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-03-di-si-ci-ke" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-01-03-di-si-ci-ke/" class="article-date">
+  <time datetime="2017-04-30T04:24:17.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2016-01-03-di-si-ci-ke/">健身动作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大幅度摆动左右手触碰脚尖热完身之后，本次教练主要带我练习了胸肌和肩膀的肌肉。</p>
+<p>第一个动作: 仰躺推哑铃棒。</p>
+<p>技术要领: 首先保持短铁棒放到胸的上部，然后将胸挺起来，保持后腰能够不要贴到躺椅，然后保持俩大臂跟胸肌在一个切面上面，推起短铁棒。尽量不要耸肩，这样就使用了肩膀和手臂的力量了。下来的时候要让短铁棒尽量靠着胸。以我的身高，教练说小指头贴紧铁棒的圆环处。</p>
+<p>我做的时候不加哑铃(短铁棒有20公斤), 然后做了一组(15个)，之后就加上了重量(不清楚多少)，之后又加了重量，各做了一组，之后又恢复了不加哑铃的状态做了一组。做完之后发现脖子以上耳朵一下的脸部的肌肉都在抖，应该血管也在收缩。加了重量之后发现基本做不动，需要教练辅助。而且自己在做的时候发现，有时候会耸肩，整个身体是缩在一起的，其实这样不利于胸肌的锻炼。而且我锻炼的时候会出现说抬起铁棒的手会向前倾，不在胸肌的切面上面，也会达不到效果。教练说其实不需要加大重量，一定要保持动作标准性。</p>
+<p>第二个动作: 双手向下拉哑铃</p>
+<p>技术要领: 首先人站在两个立柱的中间，然后双脚与肩同宽站立，然后膝盖微曲，然后屁股下坐一点，然后肩下垂，挺起胸。然后手臂拉直，肘部微曲。保持手臂外形不变，使用胸部的力量往下拉力臂，下拉到最后的时候两只手要捧在一起。</p>
+<p>锻炼部位: 主要锻炼到胸的下部分肌肉</p>
+<p>我做的时候总是会出现手臂不直的情况，这主要是由于我胸肌力量还不够，导致必须得使用手臂的力量借力，有的时候也会耸肩，使用肩膀的力量。</p>
+<p>第三个动作: 双手水平拉哑铃</p>
+<p>技术要领: 其实基本上要领跟第二个动作差不多。最主要的区别是手臂在胸的切面上面进行拉力臂。</p>
+<p>锻炼部位: 主要锻炼到胸大肌</p>
+<p>第四个动作: 上推器械</p>
+<p>主要锻炼到背部肌肉</p>
+<p>坐在练习椅子上面，然后屁股不要做到，跟锻炼胸肌的器械不一样，不需要下背也贴在靠背上面，不过上背却需要靠在上面。然后保持手臂垂直上推。</p>
+<p>我做的时候发现比较小公斤的都比较累，可能是由于之前锻炼太多了吧。教练多四肢的力量确实也决定这能够很好得锻炼胸肌和背肌。因为需要使用四肢去做支撑之类的。</p>
+<p>第五个动作: 坐直向下拉力臂</p>
+<p>首先人坐在力臂的下面，然后手臂微曲放到胸前，然后跟第二个和第三个工作一样，保持手臂形状不变，向下拉，然后保持身体不要晃动，上半身挺胸收腹。</p>
+<p>锻炼部位: 胸内测肌肉</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-01-03-di-si-ci-ke/" data-id="cj247sjkw0013kg36zbrkvzzh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-06-bai-du-di-tu-shi-yong-ploygonde-keng" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-01-06-bai-du-di-tu-shi-yong-ploygonde-keng/" class="article-date">
+  <time datetime="2017-04-30T04:23:59.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2016-01-06-bai-du-di-tu-shi-yong-ploygonde-keng/">百度地图polygon的api的使用的注意点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用百度地图js api 2.0, 使用polygon的时候，发现创建polygon之后在加入到地图图层之前就开始编辑模式，就不能创建第二个polygon，如下面代码(coffee写的，不完整):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">points = [</div><div class="line">            new BMap.Point((point.lng + 0.002), (point.lat + 0.002)),</div><div class="line">            new BMap.Point((point.lng + 0.002), (point.lat - 0.002)),</div><div class="line">            new BMap.Point((point.lng - 0.002), (point.lat - 0.002)),</div><div class="line">            new BMap.Point((point.lng - 0.002), (point.lat + 0.002))</div><div class="line">          ]</div><div class="line"></div><div class="line">          polygon = new BMap.Polygon points, $scope.polygonOptions</div><div class="line">          polygon.enableEditing() # 当在map.addOverlay之前添加启动编辑模式</div><div class="line">          map.addOverlay polygon</div><div class="line"></div><div class="line">          polygon = new BMap.Polygon points, $scope.polygonOptions</div><div class="line">          polygon.enableEditing() # 第二次再创建polygon又要开始编辑模式的时候，就会出现`Uncaught TypeError: Cannot read property &apos;Ia&apos; of null`错误</div><div class="line">          map.addOverlay polygon</div></pre></td></tr></table></figure></p>
+<p>正确的写法是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map.addOverlay polygon # 先将polygon添加到地图的图层上，然后再开启编辑模式</div><div class="line">polygon.enableEditing()</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-01-06-bai-du-di-tu-shi-yong-ploygonde-keng/" data-id="cj247sjkx0014kg36lm34ygr2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-22-javascriptdai-ma-gui-fan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-01-22-javascriptdai-ma-gui-fan/" class="article-date">
+  <time datetime="2017-04-30T04:23:07.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2016-01-22-javascriptdai-ma-gui-fan/">JS规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>使用严格模式。</p>
+<pre><code>&apos;use strict&apos;;
+</code></pre></li>
+<li><p>使用两个空格缩进, 不实用制表符缩进。</p>
+<pre><code>var a = function() {
+  console.log(&apos;a&apos;); // 两个空格
+}
+</code></pre></li>
+<li><p>字符串使用单引号。</p>
+<pre><code>var a = &apos;a&apos;;
+</code></pre></li>
+<li><p>八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。</p>
+<pre><code>var a = 0b01; // 二进制
+var a = 0o; // 八进制
+var a = 0xff; // 十六进制
+</code></pre></li>
+<li><p>二元运算符前面必须使用一个空格保持表达式的整洁。</p>
+<pre><code>var a = 1 + 1;
+</code></pre></li>
+<li><p>紧接左括号之后和紧接右括号之前不应该有空格。</p>
+<pre><code>if (&apos;undefined&apos; === typeof a) {
+
+}
+</code></pre></li>
+<li><p>对象直接量:<br>7.1 起始左括号应当同表达式保持同一行。<br>7.2 每个属性的名值保持一个缩进，第一个属性应当在左花括号后另起一行。<br>7.3 属性名值使用不含引号的属性名，气候紧跟一个冒号，冒号之后跟一个空格，然后才是值。<br>7.4 倘若属性值是函数类型，函数体应当在属性名之下另起一行。<br>7.5 结束的花括号应当独占一行。</p>
+<pre><code>var object = { // 7.1
+  key1: value1, // 7.2
+  key2: value2, // 注意冒号的位置，具体看7.3
+  key3: function() {
+    console.log(&apos;hello world!&apos;); // 7.4
+  }
+} // 7.5
+</code></pre></li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-01-22-javascriptdai-ma-gui-fan/" data-id="cj247sjl10015kg36hoj6p26t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-25-jsgui-fan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-01-25-jsgui-fan/" class="article-date">
+  <time datetime="2017-04-30T04:22:52.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2016-01-25-jsgui-fan/">JS规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>使用严格模式。</p>
+<pre><code>&apos;use strict&apos;;
+</code></pre></li>
+<li><p>使用两个空格缩进, 不实用制表符缩进。</p>
+<pre><code>var a = function() {
+  console.log(&apos;a&apos;); // 两个空格
+}
+</code></pre></li>
+<li><p>字符串使用单引号。</p>
+<pre><code>var a = &apos;a&apos;;
+</code></pre></li>
+<li><p>八进制使用0o前缀；二进制使用0b前缀；十六进制使用0x前缀。</p>
+<pre><code>var a = 0b01; // 二进制
+var a = 0o; // 八进制
+var a = 0xff; // 十六进制
+</code></pre></li>
+<li><p>二元运算符前面必须使用一个空格保持表达式的整洁。</p>
+<pre><code>var a = 1 + 1;
+</code></pre></li>
+<li><p>紧接左括号之后和紧接右括号之前不应该有空格。</p>
+<pre><code>if (&apos;undefined&apos; === typeof a) {
+  console.log(&apos;a&apos;);
+}
+</code></pre></li>
+<li><p>对象直接量:</p>
+<p> 7.1 起始左括号应当同表达式保持同一行。</p>
+<p> 7.2 每个属性的名值保持一个缩进，第一个属性应当在左花括号后另起一行。</p>
+<p> 7.3 属性名值使用不含引号的属性名，气候紧跟一个冒号，冒号之后跟一个空格，然后才是值。</p>
+<p> 7.4 倘若属性值是函数类型，函数体应当在属性名之下另起一行。</p>
+<p> 7.5 结束的花括号应当独占一行。</p>
+<pre><code>var object = { // 7.1
+  key1: value1, // 7.2
+  key2: value2, // 注意冒号的位置，具体看7.3
+  key3: function() {
+    console.log(&apos;hello world!&apos;); // 7.4
+  }
+} // 7.5
+</code></pre></li>
+<li><p>注释</p>
+<p> 8.1 文字描述之前必须有一个空格</p>
+<p> 8.2 注释上面必须有一空行</p>
+<pre><code>var a = function () {
+
+  // 这是注释
+  console.log(&apos;a&apos;);
+
+  /*
+   * 这是注释
+   */
+  console.log(&apos;a&apos;);
+}
+</code></pre></li>
+<li><p>多行注释继承第八点注释的规范，然后有新增了以下独有的规范</p>
+<p> 9.1 首行仅仅包括/*注释开始。该行不应该有其他文字。</p>
+<p> 9.2 接下来的行以*开头并保持左对齐。这些行可以有文字描述。</p>
+<p> 9.3 最后一行以*/开头比你高同先前行保持对齐。也不应当有其他文字。</p>
+<pre><code>/*
+ * 我是注释
+ * 我是注释
+ */
+</code></pre></li>
+<li><p>注释声明。注释有时候给一段代码声明额外的信息。这些声明的格式以单个单词打头并紧跟一个冒号，然后一个空格，再接上一段描述。可使用的声明如下:</p>
+<p>10.1 TODO: 说明代码还未完成，应当包含下一步要做的事情。<br>10.2 HACK: 表示代码实现走了一个捷径。应当包含为何使用hack。<br>10.3 XXX: 说明代码是有问题的并应当尽快修复。<br>10.4 FIXME: 说明代码是有问题的并应当尽快修复。重要性略次于XXX。<br>10.5 REVIEW: 说明代码任何可能的改动都需要评审。</p>
+<pre><code>// TODO: 需要增加某某功能
+doSomethins();
+</code></pre></li>
+<li><p>变量声明。</p>
+<p>11.1 一定要先声明后使用</p>
+<p>11.2 使用一个var表达式每行一个变量</p>
+<p>11.3 多一层缩进，让变量名首字母对齐(由于使用两个空格缩进，所以变量名的首字母会对齐)</p>
+<pre><code>function a() {
+  var count = 10,
+      name = &apos;Jack&apos;; // 11.2 一个var表达式
+}
+</code></pre></li>
+<li><p>函数声明</p>
+<p>12.1 函数先声明后使用。</p>
+<p>12.2 函数名和开始圆括号之间不应当有空格。</p>
+<p>12.3 匿名函数的function关键字与左括号之间不能有空格。</p>
+<p>12.3 结束的圆括号和右边的花括号之间应该留一个空格。</p>
+<p>12.4 右侧的花括号应当同function关键字保持在同一行。</p>
+<p>12.5 立即被调用的函数应当在函数调用的外层用圆括号包裹。</p>
+<pre><code>function a() {
+
+}
+
+var a = function() { // 12.3 function之后没有空格
+
+}
+
+// 12.5
+var a = (function() {
+  console.log(&apos;a&apos;);
+})();
+</code></pre></li>
+<li><p>命名。</p>
+<p>13.1 使用驼峰法</p>
+<p>13.2 变量名的第一个单词是一个名词</p>
+<p>13.3 函数命名，第一个单词为动词</p>
+<p>13.4 构造函数，第一个字母大写</p>
+<p>13.5 常量，全部大写</p>
+</li>
+<li><p>等号运算符, 使用严格等于(===)代替等于(==)来避免弱类型转换错误。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-01-25-jsgui-fan/" data-id="cj247sjl20016kg36781how0q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-03-01-qie-huan-hostswen-jian-zhi-hou-chromeliu-lan-qi-you-dnshuan-cun-mei-you-qie-huan-de-bugxiu-fu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2016-03-01-qie-huan-hostswen-jian-zhi-hou-chromeliu-lan-qi-you-dnshuan-cun-mei-you-qie-huan-de-bugxiu-fu/" class="article-date">
+  <time datetime="2017-04-30T04:22:36.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2016-03-01-qie-huan-hostswen-jian-zhi-hou-chromeliu-lan-qi-you-dnshuan-cun-mei-you-qie-huan-de-bugxiu-fu/">如何清除chrome的dns缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需要使用gas mask切换本地hosts文件来达到开发环境的切换，但是今天发现这个切换在chrome浏览器中没有生效。从hosts1切换到hosts2的时候, 发现chrome还是使用hosts1的配置，然后在shell中ping却发现是hosts2的配置。所以我就感觉是chrome这边存在dns缓存，通过google之后发现其他人确实也存在跟我一样的<a href="http://superuser.com/questions/203674/how-to-clear-flush-the-dns-cache-in-google-chrome" target="_blank" rel="external">问题</a>。</p>
+<p>我按照里面的最佳答案使用chrome打开<code>chrome://net-internals/#dns</code>，清除dns缓存之后发现还是没有起作用。于是我继续这个答案下面的其他人的评论后发现其他人也遇到这样的问题，就是host1的配置是外部ip，host2的配置的127.0.0.1，发现切换到host2的配置之后，dns解析到的还是host1里面的外部ip。然后偶然看到第二个答案写着<code>Sometimes you need to flush the socket pools after flushing the DNS:</code>，我也尝试了他提供的答案打开<code>chrome://net-internals/#sockets</code>，然后点击清楚sokects缓存。于是世界又恢复正常了，又可以愉快的跟chrome和平共处了:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2016-03-01-qie-huan-hostswen-jian-zhi-hou-chromeliu-lan-qi-you-dnshuan-cun-mei-you-qie-huan-de-bugxiu-fu/" data-id="cj247sjlc0017kg36a8re9ztm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

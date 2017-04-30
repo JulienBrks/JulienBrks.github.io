@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>viewport的使用 | JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文为这一篇文章的总结。 感谢这一篇文章提供了关于iphone的dpi的数据和google定义的dpi的说明数据。 viewport是什么?设置的区域它包括我们在手机屏幕可视的区域加上假如有滚动条的情况下，隐藏的区域。 怎么使用兼容性更好?为了能够让各个平台的手机浏览器支持viewport的设置，使用&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="viewport的使用">
+<meta property="og:url" content="https://julienbrks.github.io/2017/04/30/2015-11-17-webyi-dong-kai-fa-zhi-viewporthe-px/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta property="og:description" content="本文为这一篇文章的总结。 感谢这一篇文章提供了关于iphone的dpi的数据和google定义的dpi的说明数据。 viewport是什么?设置的区域它包括我们在手机屏幕可视的区域加上假如有滚动条的情况下，隐藏的区域。 怎么使用兼容性更好?为了能够让各个平台的手机浏览器支持viewport的设置，使用&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot">
+<meta property="og:updated_time" content="2017-04-30T04:29:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="viewport的使用">
+<meta name="twitter:description" content="本文为这一篇文章的总结。 感谢这一篇文章提供了关于iphone的dpi的数据和google定义的dpi的说明数据。 viewport是什么?设置的区域它包括我们在手机屏幕可视的区域加上假如有滚动条的情况下，隐藏的区域。 怎么使用兼容性更好?为了能够让各个平台的手机浏览器支持viewport的设置，使用&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-11-17-webyi-dong-kai-fa-zhi-viewporthe-px" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-17-webyi-dong-kai-fa-zhi-viewporthe-px/" class="article-date">
+  <time datetime="2017-04-30T04:29:18.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      viewport的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文为这一篇<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">文章</a>的总结。</p>
+<p>感谢这一篇<a href="http://tgideas.qq.com/webplat/info/news_version3/804/7104/7106/m5723/201509/376281.shtml" target="_blank" rel="external">文章</a>提供了关于iphone的dpi的数据和google定义的dpi的说明数据。</p>
+<h4 id="viewport是什么"><a href="#viewport是什么" class="headerlink" title="viewport是什么?"></a>viewport是什么?</h4><p>设置的区域它包括我们在手机屏幕可视的区域加上假如有滚动条的情况下，隐藏的区域。</p>
+<h4 id="怎么使用兼容性更好"><a href="#怎么使用兼容性更好" class="headerlink" title="怎么使用兼容性更好?"></a>怎么使用兼容性更好?</h4><p>为了能够让各个平台的手机浏览器支持viewport的设置，使用<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code>，这样能够保证各个平台的浏览器在竖屏和横屏的情况下都能够保持viewport的跨度为整个手机屏幕的宽度（一般高度我们不会做设置）。</p>
+<h5 id="使用-lt-meta-name-quot-viewport-quot-content-quot-width-device-width-initial-scale-1-quot-gt-的一个显而易见好处？"><a href="#使用-lt-meta-name-quot-viewport-quot-content-quot-width-device-width-initial-scale-1-quot-gt-的一个显而易见好处？" class="headerlink" title="使用&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;的一个显而易见好处？"></a>使用<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code>的一个显而易见好处？</h5><p>目的是为了保持页面在各个分辨率的手机浏览器上面显示效果保持一致。通过计算发现iphone4，iphone5, iphone6和使用上面的设置，也就是说100px宽的盒子显示在上面三个手机上的宽度是几乎一样的（iphone6 plus不太一样，不过也相差不大），假如我们设置width=自己设置的一个值，那么就会发现一样的页面在不同的手机分辨率下面呈现的大小不一样，而这不是我们想要看到的。</p>
+<p>Ps: 每一英寸呈现的css像素值的计算方式是 <code>dpi / (widthPixel / device-width)</code>。 这里的widthPixel表示该机型的在宽度上的物理像素值，device-width表示这个机型应用<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code>这句话之后屏幕视窗在宽度上呈现的css像素值。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-17-webyi-dong-kai-fa-zhi-viewporthe-px/" data-id="cj247sjk6000pkg364g2s1nel" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/2015-11-16-manicoying-yong-ping-ce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          manico介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/30/2015-11-18-qu-chu-chromezi-dong-tian-chong-de-yan-se/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关闭chrome记住密码的黄色背景</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

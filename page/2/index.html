@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JulienBrks的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JulienBrks的博客">
+<meta property="og:url" content="https://julienbrks.github.io/page/2/index.html">
+<meta property="og:site_name" content="JulienBrks的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JulienBrks的博客">
+  
+    <link rel="alternate" href="/atom.xml" title="JulienBrks的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JulienBrks的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://julienbrks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2015-07-27-javascriptmo-shi-xue-xi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-27-javascriptmo-shi-xue-xi/" class="article-date">
+  <time datetime="2017-04-30T04:34:48.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-27-javascriptmo-shi-xue-xi/">module模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>模式概要: 模式是用来解决一类普遍问题的解决方案</li>
+<li>Module模式概要: Module模式就是能够产生一种包含私有方法，私有属性，公用方法，公用属性对象的一种解决方案。<br>javascript钟</li>
+<li><p>实现方式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var module = (function()&#123;</div><div class="line">  var privateProp = &apos;pp1&apos;;</div><div class="line">  var privateFunc = function() &#123;</div><div class="line">    console.log(privateProp);</div><div class="line">  &#125;;</div><div class="line">  return &#123;</div><div class="line">    publicProp: &apos;pp2&apos;,</div><div class="line">    publicFunc: function() &#123;</div><div class="line">      console.log(this.publicProp);</div><div class="line">      console.log(privateProp);</div><div class="line">      privateFunc();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">module.publicFunc();</div><div class="line">module.publicProp();</div></pre></td></tr></table></figure>
+</li>
+<li><p>优点: 可以创建一个包含私有属性和私有方法的对象，很适合减少变量的污染</p>
+</li>
+<li>但是无法为私有成员无法创建单元测试。<ul>
+<li>例子: 假如私有函数有bug，需要覆盖所有跟私有方法进行交互的公有方法。</li>
+</ul>
+</li>
+<li><p>无法轻易的扩展私有方法(书里介绍的，还有疑问，先留着)</p>
+</li>
+<li><p>跟揭示模式的区别，揭示模式的优点在于统一将公有方法和私有方法定义到函数体里面，然后私有函数可以调用公有函数，然后再返回对象中公开公有方法和属性，不过这样有很大的缺陷，私有函数假如能够调用公有函数，那么公有函数改变时要小心，因为可能会有私有函数会调用它，我不喜欢这样的模式，因为代码思路比较混乱，公有函数就是对外的，它只调用私有函数才对；私有函数没有必要调用公有函数，假如有需要那么就再创建一个私有函数，那么调用那个私有函数，如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var myRevealingModule = (function() &#123;</div><div class="line">  var privateProp = &apos;pp1&apos;;</div><div class="line">  function privateFunction() &#123;</div><div class="line">  &#125;</div><div class="line">  function publicFunction(a) &#123;</div><div class="line">    privateProp = a</div><div class="line">  &#125;</div><div class="line">  return &#123;</div><div class="line">    publicFunction: publicFunction</div><div class="line">  &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-27-javascriptmo-shi-xue-xi/" data-id="cj247sjjd000ckg36dpzrnb0g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-07-27-linuxchang-yong-ming-ling" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-27-linuxchang-yong-ming-ling/" class="article-date">
+  <time datetime="2017-04-30T04:34:36.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-27-linuxchang-yong-ming-ling/">linux常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>lsb_release -a 查看本机linux的发布版本信息</li>
+<li>df 查看本机磁盘使用情况</li>
+<li>tar zxvf 解压.tar.gz压缩包</li>
+<li>查看端口连接数 netstat -pnt |grep :80 |wc -l</li>
+<li>查看端口占用 netstat -anp(linux)</li>
+<li>查看端口占用 lsof -i :80(mac)</li>
+<li>关闭防火墙(重启后失效) service iptables stop </li>
+<li>查看当前机器的cpu位数 getconf LONG_BIT</li>
+<li>查看某一个进程号(第二个字段就是进程号) netstat -nap | grep pid</li>
+<li>防火墙配置关闭,开启(下次启动会生效，当前不会生效，要生效要关闭服务) chkconfig iptables off(on) </li>
+<li>防火墙服务关闭,开启 service iptables start(stop)</li>
+<li>递归删除文件夹下面某一种类型的文件 首先检查要删除的文件: <code>find . -name &quot;*.bak&quot; -type f</code>. 可以的话就执行删除 <code>find . -name &quot;*.bak&quot; -type f -delete</code></li>
+<li>打开mysql mysql.service start</li>
+<li>du -h -d 1 查看当前目录下的一级目录的大小</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-27-linuxchang-yong-ming-ling/" data-id="cj247sjjf000dkg36g76tciyu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-07-28-vimshi-yong-ji-qiao" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-07-28-vimshi-yong-ji-qiao/" class="article-date">
+  <time datetime="2017-04-30T04:33:51.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-07-28-vimshi-yong-ji-qiao/">vim使用技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、从磁盘刷新所有的buffer文件 <code>:bufdo e</code><br>2、粘贴的另一种快捷方式。我们使用<code>y</code>,<code>d</code>是将字符串复制到0号寄存器里面，要想使用除了可以使用<code>p</code>进行粘贴以外, 还可以在编辑模式使用<code>Ctrl+R</code> + <code>0</code>进行粘贴</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-07-28-vimshi-yong-ji-qiao/" data-id="cj247sjjl000fkg36w76bmnow" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-08-01-javascriptmo-shi-xue-xi-dan-li-mo-shi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-08-01-javascriptmo-shi-xue-xi-dan-li-mo-shi/" class="article-date">
+  <time datetime="2017-04-30T04:33:32.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-08-01-javascriptmo-shi-xue-xi-dan-li-mo-shi/">JS单例模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>单例模式是一种可以被延迟实例成单例对象的方式。它跟字面量对象的区别是它只是声明了一种结构，但是不会马上存在实例(占用内存)。还有就是它的延迟加载性，它允许时机成熟之后才创建实例。</p>
+<p>应用场景: 在angularjs里面的服务就是按照单例模式创建的, 它只有被依赖注入时才会实例化，然后当其他模块需要依赖它时，得到的是一个相同的实例的引用，所以在一个模块里面改变了里面的私有属性为”a”，另一个模块里面引用的这个服务里面的私有属性值也会是”a”。</p>
+<p>优点: 如它名字所说，初始化后在内存中只会存在一个实例。它不像类，可以不断初始化，然后形成多个对象，节省了大量资源。有人说它跟javascript中的字面量声明的对象有什么区别呢？就在于延迟实例化。其实单例模式也不是仅仅是一个实例，其实也衍生到特定数量的实例。</p>
+<p>缺点: 设计模式中提到，假如我们发现在javascript中需要它的时候，则表示我们可能需要重新评估我们的设计了。说明单例模式的缺点是大于优点的，具体原因还需要实践才能给出我的答案。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-08-01-javascriptmo-shi-xue-xi-dan-li-mo-shi/" data-id="cj247sjjn000gkg36ycu60xxh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-09-03-zai-du-xiao-shen-ke-de-jiu-shu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-09-03-zai-du-xiao-shen-ke-de-jiu-shu/" class="article-date">
+  <time datetime="2017-04-30T04:33:06.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-再读肖申克的救赎"><a href="#title-再读肖申克的救赎" class="headerlink" title="  title: 再读肖申克的救赎"></a>  title: 再读肖申克的救赎</h2><p>  已经不记得上次看《肖申克的救赎》是什么时候了，不过还记得第一次看这部片子的时候就已经被感动得不知哭了多少遍，这一次依旧不能止住眼泪。特别是Brooks离开监狱到自杀的那一段好像就一直在哭，哭完整个脸都还抽筋了，原来不止笑久了会抽，哭久了也会。</p>
+<p>  Brooks是一个非常慈祥有爱心的老人，剧中他收留了从屋檐掉落的小鸟，由于小鸟还太小还不能飞，所以他将它放到自己上衣的内口袋里养着，细心呵护它直到它能飞。他跟监狱里面的那些带着痞性的人不一样，他是一个非常慈祥有学识的老人。他一生都为没有人来看的图书馆工作着。也许他刚进来的时候不是这样的，就这样他被”体制化”了，尽管我特别不喜欢给这个老人套上这个词，为什么体制要对待这样的一个老人。为什么好不容易让他适应了50年的牢狱生活之后，就要去适应外面那个更加复杂的社会呢？他的一生就这样被这个坏制度折磨着。这个可怜的老人，被暗无天日的监狱折磨得失去了希望，让他失去了自我生活的能力。尽管还有广场的鸽子能够给他带去一点点安慰，可是那些并不能够支撑起他生活下去的动力，那只被他养活的Jack小鸟也没有回来。</p>
+<p>  看这部片除了让我继续对Brooks的悲惨命运哭得不能自已以外，当然让我最觉得励志的肯定是主人公Andy啦。没进到肖申克监狱之前他是一个正直的年轻有为的律师，他平时不怎么讲话，因为他知道自己想要什么，他只会在他需要的时候讲话，比如接触Red，因为他能够帮他拿到东西。一个时刻知道自己想要什么的人是不会浑浑噩噩度过一生的，他不会愿意全盘接受命运的不公，他会抓住任何它能抓住的机会然后一点点反击这个命运，这个体制。他可以每周一次地寄信给政务要求重建图书馆，他可以宁知道会有处罚也要将自己喜欢的音乐放给监狱里面的所有人听。对他来说，”厄运随处漂，总要有人接，然后落到我头上了，仅此而已”。但是”人不能没有希望，没有追求美好事物的心，那些东西是别人拿不走的”。最后他靠他在会计上的学识，帮助狱长赚钱，帮自己赢得了一份轻松的工作，然后慢慢实施自己的越狱行为，”也许是Brooks的死才让他开始想要逃离的决心”。</p>
+<p>  “要么忙着死，要么忙着活”, 在准备逃离监狱的前一天他跟Red如是说。也许被禁闭两个月的日子他想明白了这件事情。我觉得这一切都得益于他的坚韧，他对于美好事物(这里主要是自由)不断追求的一颗心！</p>
+<p>  我也要像主人公学习，生命中有那么多美好的事情，我希望自己能够多出尝试，将他们转化为自己生命中的东西，”那些只有我们自己的东西，别人无法拿走的东西”。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-09-03-zai-du-xiao-shen-ke-de-jiu-shu/" data-id="cj247sjjq000hkg363413jer7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-09-29-zheng-que-shi-yong-angular-validation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-09-29-zheng-que-shi-yong-angular-validation/" class="article-date">
+  <time datetime="2017-04-30T04:32:36.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-09-29-zheng-que-shi-yong-angular-validation/">正确使用angular的config方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、基本用法: 定义模块的config阶段进行声明需要绑定的验证关系，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">angular.module &apos;network_manage&apos;, [&apos;validation&apos;]</div><div class="line">.config ($validationProvider) -&gt;</div><div class="line">  $validationProvider.setErrorHTML (msg) -&gt;</div><div class="line">    return &quot;&lt;small class=&apos;error&apos;&gt;&quot; + msg + &quot;&lt;/small&gt;&quot;</div><div class="line"></div><div class="line">  required = (value) -&gt;</div><div class="line">    return !!value</div><div class="line"></div><div class="line">  expression =</div><div class="line">    requiredName: required</div><div class="line">    requiredAddress: required</div><div class="line"></div><div class="line">  messages =</div><div class="line">    requiredName:</div><div class="line">      error: &apos;网点姓名不能为空&apos;</div><div class="line">    requiredAddress:</div><div class="line">      error: &apos;请输入地址&apos;</div><div class="line"></div><div class="line">  $validationProvider.setExpression expression</div><div class="line">    .setDefaultMsg messages</div></pre></td></tr></table></figure></p>
+<p>2、假如需要更改默认的验证方式的话，可以在需要验证的元素中加上一个<code>valid-method</code>属性, 它的取值有<code>submit</code>, <code>blur</code>分别表示什么时候验证，blur表示失去焦点验证，submit表示提交的时候验证。<br>3、假如是form表单，某一个输入框回车的时候，它会选择第一个没有设置<code>type=button</code>的按钮，所以假如提交的按钮在最后，那么前面的按钮一定要加上<code>type=button</code>.<br>4、假如不想给某一个输入款回车就提交，可以绑定ng-click然后使用<code>$event.preventDefault()</code>。<br>5、假如要在submit的时候能够验证, 那么必须为input加上name属性</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-09-29-zheng-que-shi-yong-angular-validation/" data-id="cj247sjjt000ikg36yyvohas6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-10-07-centosshang-an-zhuang-wan-mysqlhou-xiu-gai-mo-ren-bian-ma-wei-utf-8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-10-07-centosshang-an-zhuang-wan-mysqlhou-xiu-gai-mo-ren-bian-ma-wei-utf-8/" class="article-date">
+  <time datetime="2017-04-30T04:31:52.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-10-07-centosshang-an-zhuang-wan-mysqlhou-xiu-gai-mo-ren-bian-ma-wei-utf-8/">修改mysql默认编码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>查看当前编码<code>mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;;</code></p>
+</li>
+<li><p><code>vim /etc/my.cnf</code>在尾部加上下面代码：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">default-character-set=utf8</div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>然后重启(或者启动)mysqld <code>service mysqld start</code></p>
+</li>
+<li><p>检查<code>mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;;</code>是否都已经设置成utf-8，下图为正确的结果:<br><img src="/content/images/2015/10/EE38975A-BDDF-450C-868A-8FEF968A7969.png" alt=""></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-10-07-centosshang-an-zhuang-wan-mysqlhou-xiu-gai-mo-ren-bian-ma-wei-utf-8/" data-id="cj247sjju000jkg367w619uif" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-10-iframekua-yu-jie-jue-fang-shi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-10-iframekua-yu-jie-jue-fang-shi/" class="article-date">
+  <time datetime="2017-04-30T04:30:53.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-11-10-iframekua-yu-jie-jue-fang-shi/">angular里面使用iframe访问其他域名</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先angular默认不支持iframe访问其他域名，因为它认为这种方式是不安全的。但是它提供了一种方式可以让我们访问:<code>var url = $sce.trustAsResourceUrl(url)</code>, 将其他域名的url放到这个方法里面，然后让iframe的src为这个方法的返回值<code>&lt;iframe src=&quot;{{url}}&quot;&gt;&lt;/iframe&gt;</code>，这样就能够打开这个iframe了。</p>
+<p>更进一步，假如我们需要访问到这个iframe里面的元素的话，我们发现还是不行，由于<br><img src="/content/images/2015/11/a.png" alt="两个域名不一样">，导致还是不能访问到里面的内容。网上搜索到可以使用jsonp的方式完成访问里面页面的内容，但是比较麻烦。所以为了让两个域名一样，还是老老实实使用dns解析把，让父iframe的域名和子iframe的域名改成一样的域名，这样就可以完成父iframe可以操作子iframe的内容了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-10-iframekua-yu-jie-jue-fang-shi/" data-id="cj247sjk0000lkg366aaby0rq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-13-qian-duan-mian-shi-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-13-qian-duan-mian-shi-ti/" class="article-date">
+  <time datetime="2017-04-30T04:30:07.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-11-13-qian-duan-mian-shi-ti/">js面试问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>介绍一下你前端开发使用的工作环境和平时工作中会使用的到的工具(从浏览器, 提高效率的工具, 编辑器,可以介绍你安装的提高你工作效率的插件, 操作系统, 文档查看工具, 遇到问题解决的思路等方面入手).</li>
+<li>介绍一下标准的css盒子模型.</li>
+<li>说一下你眼中的优雅降级和渐进增强的设计思想，并举一个例子。</li>
+<li>html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？</li>
+<li>为什么要初始化CSS样式?</li>
+<li>absolute的containing block计算方式跟正常流有什么不同？</li>
+<li>使用 CSS 预处理器吗？喜欢那个，Why？</li>
+<li>你觉得你现在的开发流程科学高效嘛？有没有改进的点?</li>
+<li>display:inline-block 什么时候会显示间隙？怎么解决?</li>
+<li>用js实现过什么功能吗？(讲一个你最得意的功能, 然后详细介绍一下)</li>
+<li>你写js的基本规范是怎么样的？(将你平时写js会遵守的规范都写下来，如缩进, 命名)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-13-qian-duan-mian-shi-ti/" data-id="cj247sjk1000mkg362w39715m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-14-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/30/2015-11-14-git/" class="article-date">
+  <time datetime="2017-04-30T04:29:52.000Z" itemprop="datePublished">2017-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/30/2015-11-14-git/">git常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>切换到一个远程分支并在本地建立该分支: git fetch &amp; git checkout {那个分支}</li>
+<li>撤销一次合并, 直接附上最好的<a href="https://git-scm.com/blog/2010/03/02/undoing-merges.html" target="_blank" rel="external">解释</a>。简单来说比较好的方式使用<code>git revert -m {parent}</code>命令, 假如撤销的合并是从feature分之合并到master分支的话，然后我想撤销这次合并并保留master分支上面的提交的话，那么这边的{parent}就是1，假如要保留feature分支的话，{parent}就是2。</li>
+<li>今天开发遇到了情况将master分支合并到其他分支了，导致不知道怎么撤销，撤销哪一个合并，因为master分支合并到其他分支之后，那个分支又进行了一个pull的合并操作，其实想想只要将master分之合并到那个分支的那次合并给撤销掉，然后保留master分支的提交就好了。因为那个分支的pull的merge操作的那些服务器上面的提交是不会应用到master分支上面的。</li>
+<li>查看某一次提交的记录<code>git show c</code>. c是commit的hash值</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://julienbrks.github.io/2017/04/30/2015-11-14-git/" data-id="cj247sjk2000nkg36s4y81kr3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/30/2015-07-28-centosan-zhuang-tmux/">解决perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-11-01-xiu-fu-macosdiao-yong-perlshi-hui-chu-xian-warning-setting-locale-failed/">修复恼人的 perl warning Setting locale failed</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-05-26-shou-ji-shang-webkitnei-he-de-liu-lan-qi-spanyuan-su-font-sizewu-fa-cheng-da-nei-rong/">手机上行内元素无法设置font-size的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-11-ji-zhu-ren-xi-huan-de-gong-si/">牢骚</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/2015-06-15-optionqing-qiu-shi-shi-yao/">跨域的option请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Julien Brooks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
